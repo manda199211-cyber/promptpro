@@ -1,0 +1,72 @@
+{
+  "WEEK-10-MP": {
+    "plan": "周付",
+    "price": "¥10 / 周",
+    "days": 7,
+    "disabled": true
+  },
+  "MONTH-199-MP": {
+    "plan": "月付",
+    "price": "¥19.9 / 月",
+    "days": 31,
+    "disabled": true
+  },
+  "YEAR-59-MP": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "disabled": true,
+    "usedAt": "2026-04-27T14:41:16.871Z",
+    "activatedPlan": "年付"
+  },
+  "LIFE-99-MP": {
+    "plan": "永久",
+    "price": "¥99 一次性",
+    "lifetime": true,
+    "disabled": true
+  },
+  "YEAR-D96661-7E3759": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-27T14:39:52.675Z",
+    "usedAt": "2026-04-27T14:40:21.298Z",
+    "activatedPlan": "年付"
+  },
+  "YEAR-65740F-84134A": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-27T14:42:06.370Z"
+  },
+  "YEAR-0544AC-4F4318": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-27T14:42:06.371Z"
+  },
+  "YEAR-CEDCAB-CDAB01": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-27T14:42:06.371Z"
+  },
+  "LIFE-4855B0-DB69B1": {
+    "plan": "永久",
+    "price": "¥99 一次性",
+    "lifetime": true,
+    "createdAt": "2026-04-27T14:42:06.447Z"
+  },
+  "LIFE-D67A67-BCBBD4": {
+    "plan": "永久",
+    "price": "¥99 一次性",
+    "lifetime": true,
+    "createdAt": "2026-04-27T14:42:06.448Z"
+  },
+  "LIFE-B5C089-69D058": {
+    "plan": "永久",
+    "price": "¥99 一次性",
+    "lifetime": true,
+    "createdAt": "2026-04-27T14:42:06.448Z"
+  }
+}

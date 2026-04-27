@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M-Prompt</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- 顶部标题栏 -->
+<div class="titlebar">
+  <!-- 左侧拖动区域 - 整个空白区域都可拖动 -->
+  <div class="titlebar-drag-area">
+    <div class="titlebar-brand">
+      <div class="titlebar-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect width="28" height="28" rx="7" fill="url(#g1)"/>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#818cf8"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs>
+          <text x="6" y="20" fill="white" font-size="16" font-weight="800" font-family="system-ui">M</text>
+        </svg>
+      </div>
+      <span class="titlebar-text">M-Prompt</span>
+      <span class="titlebar-version">v1.1</span>
+    </div>
+  </div>
+  <div class="titlebar-center">
+    <!-- 模式切换 Tab -->
+    <div class="mode-tabs">
+      <button class="mode-tab active" data-mode="positive" onclick="switchMode('positive')">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 1 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+        正向
+      </button>
+      <button class="mode-tab" data-mode="negative" onclick="switchMode('negative')">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg>
+        反向
+      </button>
+      <button class="mode-tab draft-tab" data-mode="draft" onclick="switchMode('draft')">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M14.854 2.854a.5.5 0 0 0-.708-.708l-10 10a.5.5 0 0 0 .708.708l10-10zM13.5 1a1.5 1.5 0 0 1 .5 2.915l-10 10A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1a1.5 1.5 0 0 1 .585-1.191l10-10A1.5 1.5 0 0 1 13.5 1z"/></svg>
+        草稿
+      </button>
+    </div>
+  </div>
+  <div class="titlebar-actions">
+    <!-- 语言切换 -->
+    <div class="lang-switch">
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="zh" onclick="setLang('zh')">中文</button>
+    </div>
+    <button class="tb-btn" id="btnTheme" title="切换主题" onclick="toggleTheme()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 1zm0 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6.5-2.5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm-12 0a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zM8 13a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 13zm-3.182-.318a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 1 1 .707-.707l.707.707a.5.5 0 0 1 0 .707zm9.192-9.192a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 1 1 .707-.707l.707.707a.5.5 0 0 1 0 .707zM4.515 3.515a.5.5 0 0 1 0 .707l-.707.707a.5.5 0 1 1-.707-.707l.707-.707a.5.5 0 0 1 .707 0zm9.192 9.192a.5.5 0 0 1 0 .707l-.707.707a.5.5 0 1 1-.707-.707l.707-.707a.5.5 0 0 1 .707 0z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- 主容器 -->
+<div class="app-container">
+
+  <!-- 左侧 - 类别面板 -->
+  <div class="panel panel-left">
+    <div class="panel-header">
+      <h3 id="catLabel">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/></svg>
+        类别
+      </h3>
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" class="search-icon"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg>
+        <input type="text" id="searchInput" placeholder="搜索类别..." oninput="filterCategories()">
+      </div>
+    </div>
+    <div class="category-list" id="categoryList"></div>
+    <div class="panel-footer" id="statsFooter"></div>
+  </div>
+
+  <!-- 中间 - 提示词列表 -->
+  <div class="panel panel-center">
+    <div class="panel-header">
+      <h3 id="promptTitle">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+        选择类别查看提示词
+      </h3>
+    </div>
+    <div class="prompt-list" id="promptList">
+      <div class="empty-state">
+        <div class="empty-icon">🎯</div>
+        <p>选择左侧类别开始</p>
+        <span>正向 + 反向 提示词等你探索</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右侧 - 组合预览 -->
+  <div class="panel panel-right">
+    <div class="panel-header">
+      <h3>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/></svg>
+        Prompt 组合
+        <span class="lang-badge" id="langBadge">EN</span>
+      </h3>
+    </div>
+
+    <div class="preview-scroll">
+
+      <!-- 正向提示词区域 -->
+      <div class="section-divider positive-divider">
+        <span class="section-dot positive-dot"></span> 正向提示词
+        <span class="section-count" id="posCount">0</span>
+      </div>
+      <div class="selected-chips" id="selectedChips">
+        <div class="empty-chips"><span>点击提示词添加</span></div>
+      </div>
+      <div class="preview-box">
+        <div class="preview-header">
+          <span class="preview-label">Positive Prompt</span>
+          <button class="copy-btn" onclick="copyEnglish()" title="复制">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+          </button>
+        </div>
+        <pre class="preview-text" id="englishPreview">等待选择提示词...</pre>
+      </div>
+
+      <!-- 反向提示词区域 -->
+      <div class="section-divider negative-divider">
+        <span class="section-dot negative-dot"></span> 反向提示词
+        <span class="section-count" id="negCount">0</span>
+      </div>
+      <div class="selected-chips negative-chips" id="negSelectedChips">
+        <div class="empty-chips"><span>切换到反向模式添加</span></div>
+      </div>
+      <div class="preview-box negative-box">
+        <div class="preview-header">
+          <span class="preview-label negative-label">Negative Prompt</span>
+          <button class="copy-btn" onclick="copyNegative()" title="复制">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+          </button>
+        </div>
+        <pre class="preview-text" id="negativePreview">等待选择反向提示词...</pre>
+      </div>
+
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="action-buttons">
+      <button class="btn btn-primary" onclick="copyAll()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+        一键复制
+      </button>
+      <button class="btn btn-secondary" onclick="copyEnglish()">正向</button>
+      <button class="btn btn-secondary negative-btn" onclick="copyNegative()">反向</button>
+      <button class="btn btn-ghost" onclick="clearAll()">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/><path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H5.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1h2.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast 通知 -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 1 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/></svg>
+  <span id="toastText">已复制到剪贴板</span>
+</div>
+
+<!-- ==================== 草稿页面 ==================== -->
+<div class="draft-page" id="draftPage" style="display:none;">
+
+  <!-- 草稿左侧 - 分组列表 -->
+  <div class="panel draft-sidebar">
+    <div class="panel-header">
+      <h3>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/></svg>
+        我的草稿
+      </h3>
+      <button class="draft-add-btn" onclick="addDraftGroup()" title="新建分组">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+        新建分组
+      </button>
+    </div>
+    <div class="draft-groups" id="draftGroups"></div>
+    <div class="panel-footer" id="draftStats"></div>
+  </div>
+
+  <!-- 草稿中间 - 提示词编辑区 -->
+  <div class="panel draft-main">
+    <div class="panel-header">
+      <h3 id="draftGroupTitle">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M14.854 2.854a.5.5 0 0 0-.708-.708l-10 10a.5.5 0 0 0 .708.708l10-10z"/></svg>
+        选择分组查看
+      </h3>
+      <button class="draft-add-btn" onclick="addDraftPrompt()" id="addPromptBtn" style="display:none;" title="添加提示词">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>
+        添加提示词
+      </button>
+    </div>
+    <div class="draft-prompt-list" id="draftPromptList">
+      <div class="empty-state">
+        <div class="empty-icon">📝</div>
+        <p>选择左侧分组或新建一个</p>
+        <span>自由编辑你的个人提示词</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 草稿右侧 - 预览和复制 -->
+  <div class="panel draft-preview">
+    <div class="panel-header">
+      <h3>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/></svg>
+        草稿预览
+      </h3>
+    </div>
+    <div class="preview-scroll">
+      <div class="preview-box">
+        <div class="preview-header">
+          <span class="preview-label">当前分组预览</span>
+          <button class="copy-btn" onclick="copyDraft()" title="复制">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+          </button>
+        </div>
+        <pre class="preview-text" id="draftPreviewText">暂无内容...</pre>
+      </div>
+
+      <div class="preview-box" style="margin-top:12px;">
+        <div class="preview-header">
+          <span class="preview-label">全部草稿预览</span>
+          <button class="copy-btn" onclick="copyAllDrafts()" title="复制全部">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+          </button>
+        </div>
+        <pre class="preview-text" id="draftAllPreviewText">暂无内容...</pre>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button class="btn btn-primary" onclick="copyDraft()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
+        复制当前组
+      </button>
+      <button class="btn btn-secondary" onclick="copyAllDrafts()">复制全部</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

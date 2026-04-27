@@ -1,0 +1,463 @@
+{
+  "通用反向提示词": [
+    {
+      "name": "通用质量提升",
+      "english": "low quality, worst quality, bad quality, lowres, blurry, pixelated, jpeg artifacts, noise, grain",
+      "chinese": "低质量，最差质量，坏质量，低分辨率，模糊，像素化，JPEG伪影，噪点，颗粒"
+    },
+    {
+      "name": "人体结构修复",
+      "english": "bad anatomy, bad proportions, deformed, disfigured, extra limbs, missing limbs, floating limbs, disconnected limbs, mutation, mutated, extra fingers, missing fingers, fused fingers, too many fingers, long neck",
+      "chinese": "糟糕解剖，糟糕比例，变形，毁容，多余肢体，缺失肢体，漂浮肢体，断开肢体，突变，变异，多余手指，缺失手指，融合手指，太多手指，长脖子"
+    },
+    {
+      "name": "面部修复",
+      "english": "ugly face, deformed face, asymmetrical face, crossed eyes, bad eyes, bad nose, bad mouth, bad teeth, double chin, long face, malformed face",
+      "chinese": "丑脸，变形脸，不对称脸，斗鸡眼，坏眼睛，坏鼻子，坏嘴巴，坏牙齿，双下巴，长脸，畸形脸"
+    },
+    {
+      "name": "手部修复",
+      "english": "bad hands, malformed hands, extra fingers, missing fingers, fused fingers, too many fingers, claw hands, mutated hands, poorly drawn hands, disconnected fingers",
+      "chinese": "坏手，畸形手，多余手指，缺失手指，融合手指，太多手指，爪形手，变异手，画得差的手，断开的手指"
+    },
+    {
+      "name": "图像伪影",
+      "english": "watermark, signature, text, logo, username, artist name, copyright, censored, cropped, out of frame, border, frame",
+      "chinese": "水印，签名，文字，标志，用户名，艺术家名字，版权，审查，裁剪，画面外，边框，框架"
+    },
+    {
+      "name": "绘画错误",
+      "english": "poorly drawn, bad art, beginner art, amateur, glitch, error, mistake, messy, sloppy, unfinished",
+      "chinese": "画得差，坏艺术，初学者艺术，业余，故障，错误，失误，凌乱，草率，未完成"
+    },
+    {
+      "name": "过度处理",
+      "english": "overexposed, underexposed, oversaturated, over-sharpened, over-processed, HDR, excessive contrast, blown out highlights",
+      "chinese": "过度曝光，曝光不足，过度饱和，过度锐化，过度处理，HDR，过度对比，高光溢出"
+    },
+    {
+      "name": "通用完整版",
+      "english": "low quality, worst quality, bad quality, lowres, blurry, pixelated, bad anatomy, bad proportions, deformed, disfigured, extra limbs, missing limbs, floating limbs, disconnected limbs, mutation, mutated, extra fingers, missing fingers, fused fingers, too many fingers, long neck, ugly face, bad hands, watermark, signature, text, logo",
+      "chinese": "低质量，最差质量，坏质量，低分辨率，模糊，像素化，糟糕解剖，糟糕比例，变形，毁容，多余肢体，缺失肢体，漂浮肢体，断开肢体，突变，变异，多余手指，缺失手指，融合手指，太多手指，长脖子，丑脸，坏手，水印，签名，文字，标志"
+    }
+  ],
+  "人物反向提示词": [
+    {
+      "name": "人物通用",
+      "english": "bad anatomy, bad proportions, deformed body, disfigured, malformed, mutation, mutated, extra limbs, missing limbs, floating limbs, disconnected limbs, long neck, bad posture",
+      "chinese": "糟糕解剖，糟糕比例，变形身体，毁容，畸形，突变，变异，多余肢体，缺失肢体，漂浮肢体，断开肢体，长脖子，不良姿势"
+    },
+    {
+      "name": "面部精细",
+      "english": "ugly face, deformed face, asymmetrical face, lopsided face, crossed eyes, lazy eye, bad eyes, deformed eyes, bad nose, crooked nose, bad mouth, bad lips, bad teeth, crooked teeth, double chin, sagging skin, wrinkles, blemishes, acne, scars",
+      "chinese": "丑脸，变形脸，不对称脸，歪脸，斗鸡眼，斜视，坏眼睛，变形眼睛，坏鼻子，歪鼻子，坏嘴巴，坏嘴唇，坏牙齿，歪牙，双下巴，皮肤松弛，皱纹，瑕疵，痤疮，疤痕"
+    },
+    {
+      "name": "眼睛修复",
+      "english": "bad eyes, crossed eyes, lazy eye, asymmetrical eyes, different sized eyes, deformed eyes, no pupils, no irises, weird eyes, glassy eyes, dead eyes",
+      "chinese": "坏眼睛，斗鸡眼，斜视，不对称眼睛，大小眼，变形眼睛，无瞳孔，无虹膜，奇怪眼睛，呆滞眼睛，死鱼眼"
+    },
+    {
+      "name": "手部精细",
+      "english": "bad hands, malformed hands, deformed hands, extra fingers, missing fingers, fused fingers, too many fingers, claw hands, mutated hands, poorly drawn hands, disconnected fingers, awkward hand pose, unnatural hand position",
+      "chinese": "坏手，畸形手，变形手，多余手指，缺失手指，融合手指，太多手指，爪形手，变异手，画得差的手，断开的手指，尴尬手势，不自然手位置"
+    },
+    {
+      "name": "腿部修复",
+      "english": "bad legs, deformed legs, extra legs, missing legs, malformed legs, awkward leg position, floating legs, disconnected legs, too many legs",
+      "chinese": "坏腿，变形腿，多余腿，缺失腿，畸形腿，尴尬腿位置，漂浮腿，断开腿，太多腿"
+    },
+    {
+      "name": "身体比例",
+      "english": "bad proportions, wrong proportions, disproportionate body, elongated body, shortened body, huge head, tiny head, long torso, short torso, wide shoulders, narrow shoulders",
+      "chinese": "糟糕比例，错误比例，不成比例身体，拉长身体，缩短身体，大头，小头，长躯干，短躯干，宽肩，窄肩"
+    },
+    {
+      "name": "服装问题",
+      "english": "bad clothing, poorly fitted clothes, floating clothes, disconnected clothes, clothes merging with body, wrong clothing details, messy clothing",
+      "chinese": "糟糕服装，不合身衣服，漂浮衣服，断开衣服，衣服与身体融合，错误服装细节，凌乱服装"
+    },
+    {
+      "name": "头发问题",
+      "english": "bad hair, poorly drawn hair, floating hair, disconnected hair, unnatural hair, hair merging with face, messy hair, weird hair",
+      "chinese": "糟糕头发，画得差的头发，漂浮头发，断开头发，不自然头发，头发与脸融合，凌乱头发，奇怪头发"
+    },
+    {
+      "name": "多人场景",
+      "english": "extra people, crowd, bystanders, background people, multiple faces, merged people, overlapping people, cloned people",
+      "chinese": "多余人物，人群，旁观者，背景人物，多张脸，融合人物，重叠人物，克隆人物"
+    },
+    {
+      "name": "儿童专用",
+      "english": "adult features, mature face, wrinkles, aged skin, facial hair, mature body, sexualized, inappropriate",
+      "chinese": "成人特征，成熟脸，皱纹，老化皮肤，面部毛发，成熟身体，性化，不当内容"
+    }
+  ],
+  "建筑反向提示词": [
+    {
+      "name": "建筑通用",
+      "english": "bad architecture, distorted building, warped structure, impossible geometry, floating elements, disconnected parts, collapsed structure, ruined building",
+      "chinese": "糟糕建筑，扭曲建筑，变形结构，不可能几何，漂浮元素，断开部分，倒塌结构，废墟建筑"
+    },
+    {
+      "name": "透视错误",
+      "english": "wrong perspective, distorted perspective, impossible perspective, skewed lines, warped lines, crooked walls, tilted floors, uneven ceiling",
+      "chinese": "错误透视，扭曲透视，不可能透视，倾斜线条，变形线条，歪墙，倾斜地板，不平天花板"
+    },
+    {
+      "name": "结构问题",
+      "english": "impossible structure, floating parts, disconnected elements, missing supports, structural errors, broken windows, damaged walls",
+      "chinese": "不可能结构，漂浮部分，断开元素，缺失支撑，结构错误，破碎窗户，损坏墙壁"
+    },
+    {
+      "name": "室内问题",
+      "english": "bad interior, cramped space, impossible room layout, floating furniture, disconnected walls, missing doors, misplaced windows, wrong scale furniture",
+      "chinese": "糟糕室内，拥挤空间，不可能房间布局，漂浮家具，断开墙壁，缺失门，错位窗户，错误比例家具"
+    },
+    {
+      "name": "城市景观",
+      "english": "empty streets, abandoned city, ruined buildings, debris, garbage, graffiti, vandalism, neglected, run-down",
+      "chinese": "空旷街道，废弃城市，废墟建筑，碎片，垃圾，涂鸦，破坏，荒废，破旧"
+    },
+    {
+      "name": "细节错误",
+      "english": "missing details, wrong details, inconsistent style, mismatched elements, anachronistic features, floating decorations",
+      "chinese": "缺失细节，错误细节，不一致风格，不匹配元素，时代错位特征，漂浮装饰"
+    },
+    {
+      "name": "光影错误",
+      "english": "wrong shadows, inconsistent lighting, floating shadows, missing shadows, multiple light sources, harsh shadows, blown out windows",
+      "chinese": "错误阴影，不一致光线，漂浮阴影，缺失阴影，多个光源，硬阴影，过曝窗户"
+    },
+    {
+      "name": "材质问题",
+      "english": "wrong materials, unrealistic textures, flat surfaces, plastic look, cheap materials, poor quality materials, fake appearance",
+      "chinese": "错误材质，不真实纹理，平坦表面，塑料感，廉价材料，低质量材料，假外观"
+    }
+  ],
+  "风景反向提示词": [
+    {
+      "name": "风景通用",
+      "english": "unnatural landscape, impossible terrain, floating mountains, wrong horizon, tilted horizon, distorted perspective, artificial look",
+      "chinese": "不自然风景，不可能地形，漂浮山脉，错误地平线，倾斜地平线，扭曲透视，人工外观"
+    },
+    {
+      "name": "天空问题",
+      "english": "bad sky, unrealistic clouds, wrong sun position, multiple suns, wrong moon phase, unnatural sky color, floating sky elements",
+      "chinese": "糟糕天空，不真实云彩，错误太阳位置，多个太阳，错误月相，不自然天空颜色，漂浮天空元素"
+    },
+    {
+      "name": "水体问题",
+      "english": "bad water, unrealistic water, wrong reflections, floating water, disconnected water, impossible waves, dry ocean",
+      "chinese": "糟糕水面，不真实水面，错误倒影，漂浮水，断开水，不可能波浪，干涸海洋"
+    },
+    {
+      "name": "植被问题",
+      "english": "dead plants, dying trees, brown grass, wilted flowers, barren landscape, desert where forest should be, floating trees",
+      "chinese": "枯死植物，垂死树木，棕色草地，枯萎花朵，贫瘠风景，本该是森林的沙漠，漂浮树木"
+    },
+    {
+      "name": "天气错误",
+      "english": "wrong weather, inconsistent weather, rain without clouds, snow in summer, sun during storm, impossible weather combination",
+      "chinese": "错误天气，不一致天气，无云下雨，夏天下雪，暴风雨出太阳，不可能天气组合"
+    },
+    {
+      "name": "季节错误",
+      "english": "wrong season, inconsistent season, autumn leaves in spring, flowers in winter, snow in summer, green trees in fall",
+      "chinese": "错误季节，不一致季节，春天秋叶，冬天开花，夏天下雪，秋天绿叶"
+    }
+  ],
+  "动物反向提示词": [
+    {
+      "name": "动物通用",
+      "english": "bad anatomy, deformed body, extra limbs, missing limbs, wrong proportions, mutated, disfigured, unnatural pose, impossible pose",
+      "chinese": "糟糕解剖，变形身体，多余肢体，缺失肢体，错误比例，突变，毁容，不自然姿势，不可能姿势"
+    },
+    {
+      "name": "宠物专用",
+      "english": "aggressive expression, scary, threatening, injured, sick, malnourished, dirty, mangy, unhealthy",
+      "chinese": "攻击性表情，可怕，威胁，受伤，生病，营养不良，脏，癞皮，不健康"
+    },
+    {
+      "name": "野生动物",
+      "english": "caged, captive, injured, dead, hunted, trapped, suffering, in zoo, domesticated wild animal",
+      "chinese": "笼养，囚禁，受伤，死亡，被猎杀，被困，受苦，动物园，驯化野生动物"
+    },
+    {
+      "name": "鸟类专用",
+      "english": "flightless bird flying, wrong wing shape, extra wings, missing wings, deformed beak, wrong feet, floating bird",
+      "chinese": "不会飞的鸟在飞，错误翅膀形状，多余翅膀，缺失翅膀，变形喙，错误脚，漂浮鸟"
+    },
+    {
+      "name": "海洋生物",
+      "english": "fish out of water, underwater animal on land, deformed fins, wrong body shape, floating underwater, dry ocean",
+      "chinese": "鱼离开水，水下动物在陆地，变形鳍，错误身体形状，水下漂浮，干涸海洋"
+    },
+    {
+      "name": "昆虫专用",
+      "english": "wrong leg count, deformed wings, missing wings, extra body segments, unnatural colors, floating insect",
+      "chinese": "错误腿数量，变形翅膀，缺失翅膀，多余身体节段，不自然颜色，漂浮昆虫"
+    }
+  ],
+  "产品反向提示词": [
+    {
+      "name": "产品通用",
+      "english": "damaged, broken, scratched, dented, dirty, dusty, stained, worn out, defective, poor quality, cheap looking",
+      "chinese": "损坏，破碎，划痕，凹陷，脏，灰尘，污渍，磨损，缺陷，低质量，廉价感"
+    },
+    {
+      "name": "包装问题",
+      "english": "damaged packaging, torn box, crushed box, opened package, missing parts, incomplete set, wrong packaging",
+      "chinese": "损坏包装，撕裂盒子，压碎盒子，打开包装，缺失零件，不完整套装，错误包装"
+    },
+    {
+      "name": "食品问题",
+      "english": "spoiled food, moldy, rotten, burnt, overcooked, undercooked, unappetizing, messy presentation, dirty dishes",
+      "chinese": "变质食物，发霉，腐烂，烧焦，煮过头，未煮熟，无食欲，凌乱摆盘，脏盘子"
+    },
+    {
+      "name": "电子产品",
+      "english": "broken screen, cracked display, damaged device, outdated model, obsolete, malfunctioning, dead battery, tangled wires",
+      "chinese": "碎屏，破裂显示器，损坏设备，过时型号，淘汰，故障，没电，缠绕电线"
+    },
+    {
+      "name": "服装问题",
+      "english": "wrinkled, stained, torn, faded, stretched, shrunk, pilling, loose threads, missing buttons, broken zipper",
+      "chinese": "皱褶，污渍，撕裂，褪色，拉伸，缩水，起球，松线，缺失扣子，坏拉链"
+    },
+    {
+      "name": "珠宝问题",
+      "english": "tarnished, scratched, bent, missing stones, loose settings, fake looking, plastic appearance, dull finish",
+      "chinese": "失去光泽，划痕，弯曲，缺失宝石，松动镶嵌，假货感，塑料外观，暗淡表面"
+    }
+  ],
+  "艺术风格反向提示词": [
+    {
+      "name": "写实风格",
+      "english": "cartoon, anime, illustration, painting, drawing, sketch, stylized, abstract, surreal, fantasy art",
+      "chinese": "卡通，动漫，插画，绘画，画，素描，风格化，抽象，超现实，奇幻艺术"
+    },
+    {
+      "name": "动漫风格",
+      "english": "realistic, photorealistic, photograph, 3D render, hyperrealistic, detailed skin, realistic lighting, photographic",
+      "chinese": "写实，照片级真实，照片，3D渲染，超写实，细节皮肤，真实光线，摄影"
+    },
+    {
+      "name": "油画风格",
+      "english": "digital art, smooth, clean lines, vector, flat colors, cel shading, anime style, photograph",
+      "chinese": "数字艺术，平滑，干净线条，矢量，扁平色彩，赛璐璐阴影，动漫风格，照片"
+    },
+    {
+      "name": "水彩风格",
+      "english": "digital, sharp edges, clean lines, saturated colors, opaque, photograph, realistic",
+      "chinese": "数字，锐利边缘，干净线条，饱和色彩，不透明，照片，写实"
+    },
+    {
+      "name": "素描风格",
+      "english": "colored, painted, photograph, 3D render, digital art, finished artwork, detailed shading",
+      "chinese": "彩色，绘画，照片，3D渲染，数字艺术，完成作品，细节阴影"
+    },
+    {
+      "name": "像素艺术",
+      "english": "high resolution, smooth, anti-aliased, realistic, photograph, vector art, 3D render",
+      "chinese": "高分辨率，平滑，抗锯齿，写实，照片，矢量艺术，3D渲染"
+    },
+    {
+      "name": "赛博朋克",
+      "english": "natural, organic, rural, historical, vintage, rustic, pastoral, peaceful, calm",
+      "chinese": "自然，有机，乡村，历史，复古，质朴，田园，宁静，平静"
+    },
+    {
+      "name": "奇幻风格",
+      "english": "modern, urban, realistic, contemporary, mundane, ordinary, everyday, scientific",
+      "chinese": "现代，都市，写实，当代，平凡，普通，日常，科学"
+    }
+  ],
+  "摄影反向提示词": [
+    {
+      "name": "专业摄影",
+      "english": "amateur photo, snapshot, phone photo, bad lighting, poor composition, motion blur, out of focus, bad exposure",
+      "chinese": "业余照片，快照，手机照片，糟糕光线，差构图，运动模糊，失焦，错误曝光"
+    },
+    {
+      "name": "人像摄影",
+      "english": "bad lighting, harsh shadows, overexposed face, underexposed face, red eyes, closed eyes, awkward pose, bad angle, unflattering",
+      "chinese": "糟糕光线，硬阴影，过曝脸部，曝光不足脸部，红眼，闭眼，尴尬姿势，坏角度，不美观"
+    },
+    {
+      "name": "风景摄影",
+      "english": "power lines, buildings in nature, people in landscape, trash, pollution, haze, fog, overcast, flat lighting",
+      "chinese": "电线，自然中建筑，风景中人物，垃圾，污染，雾霾，雾，阴天，平淡光线"
+    },
+    {
+      "name": "产品摄影",
+      "english": "amateur, phone photo, bad lighting, reflections, shadows, dust, fingerprints, messy background, distracting elements",
+      "chinese": "业余，手机照片，糟糕光线，反射，阴影，灰尘，指纹，凌乱背景，干扰元素"
+    },
+    {
+      "name": "美食摄影",
+      "english": "unappetizing, messy, dirty dishes, bad lighting, plastic food, fake looking, overprocessed, artificial colors",
+      "chinese": "无食欲，凌乱，脏盘子，糟糕光线，塑料食物，假货感，过度处理，人工颜色"
+    },
+    {
+      "name": "建筑摄影",
+      "english": "distorted lines, converging verticals, tilted building, bad perspective, distracting elements, power lines, trash, people",
+      "chinese": "扭曲线条，垂直汇聚，倾斜建筑，糟糕透视，干扰元素，电线，垃圾，人物"
+    }
+  ],
+  "AI生成问题修复": [
+    {
+      "name": "AI伪影",
+      "english": "AI generated look, artificial, synthetic, computer generated, fake, unnatural, uncanny valley, plastic skin, waxy skin",
+      "chinese": "AI生成外观，人工，合成，电脑生成，假，不自然，恐怖谷，塑料皮肤，蜡质皮肤"
+    },
+    {
+      "name": "过度平滑",
+      "english": "over-smoothed, plastic skin, waxy appearance, airbrushed, too perfect, artificial smoothness, loss of detail",
+      "chinese": "过度平滑，塑料皮肤，蜡质外观，磨皮，太完美，人工平滑，细节丢失"
+    },
+    {
+      "name": "风格混合",
+      "english": "inconsistent style, mixed styles, conflicting elements, clashing aesthetics, random details, incoherent composition",
+      "chinese": "不一致风格，混合风格，冲突元素，不协调美学，随机细节，不连贯构图"
+    },
+    {
+      "name": "细节过度",
+      "english": "over-detailed, busy, cluttered, chaotic, overwhelming details, noisy, distracting patterns",
+      "chinese": "过度细节，繁忙，杂乱，混乱，压倒性细节，噪点，干扰图案"
+    },
+    {
+      "name": "色彩问题",
+      "english": "wrong colors, unnatural colors, oversaturated, desaturated, color cast, inconsistent colors, clashing colors",
+      "chinese": "错误颜色，不自然颜色，过度饱和，去饱和，色偏，不一致颜色，冲突颜色"
+    },
+    {
+      "name": "构图问题",
+      "english": "bad composition, awkward framing, off-center, unbalanced, empty space, cluttered, distracting background",
+      "chinese": "糟糕构图，尴尬取景，偏离中心，不平衡，空白空间，杂乱，干扰背景"
+    },
+    {
+      "name": "生成痕迹",
+      "english": "visible seams, tile patterns, repeated elements, mirrored elements, copy-paste look, generated artifacts",
+      "chinese": "可见接缝，平铺图案，重复元素，镜像元素，复制粘贴外观，生成伪影"
+    }
+  ],
+  "电影反向提示词": [
+    {
+      "name": "业余拍摄",
+      "english": "amateur footage, shaky camera, poor framing, bad composition, home video quality, low budget look, unprofessional",
+      "chinese": "业余拍摄，抖动镜头，糟糕构图，坏构图，家庭视频质量，低预算外观，不专业"
+    },
+    {
+      "name": "电视电影感",
+      "english": "TV movie look, soap opera effect, video look, interlaced, broadcast quality, cheap production, made-for-TV",
+      "chinese": "电视电影感，肥皂剧效果，视频感，隔行扫描，广播质量，廉价制作，电视电影"
+    },
+    {
+      "name": "过度剪辑",
+      "english": "over-edited, excessive cuts, jump cuts everywhere, choppy editing, disorienting, seizure-inducing, MTV style",
+      "chinese": "过度剪辑，过多切镜，到处跳切，碎片剪辑，令人困惑，引发癫痫，MTV 风格"
+    },
+    {
+      "name": "廉价特效",
+      "english": "cheap CGI, bad VFX, obvious green screen, poor compositing, fake looking effects, low quality effects, Syfy channel",
+      "chinese": "廉价 CGI，坏特效，明显绿幕，糟糕合成，假特效，低质量效果，Syfy 频道"
+    },
+    {
+      "name": "糟糕配音",
+      "english": "bad dubbing, lip sync issues, ADR problems, mismatched audio, poor voice acting, dubbed over",
+      "chinese": "糟糕配音，口型不同步，ADR 问题，音频不匹配，差劲配音，后期配音"
+    },
+    {
+      "name": "低俗内容",
+      "english": "tasteless, offensive, inappropriate, vulgar, crude humor, low-brow, exploitative",
+      "chinese": "低俗，冒犯，不当，粗俗，粗鲁幽默，低级，剥削"
+    }
+  ],
+  "画幅构图反向": [
+    {
+      "name": "构图错误",
+      "english": "bad composition, awkward framing, off-center subject, too much headroom, cutting off heads, poor cropping, unbalanced",
+      "chinese": "糟糕构图，尴尬取景，主体偏离中心，太多头顶空间，切掉头部，糟糕裁剪，不平衡"
+    },
+    {
+      "name": "比例失调",
+      "english": "wrong aspect ratio, stretched image, squashed, distorted proportions, incorrect dimensions, letterboxing issues",
+      "chinese": "错误画幅比例，拉伸图像，压扁，变形比例，错误尺寸，黑边问题"
+    },
+    {
+      "name": "边缘问题",
+      "english": "cut off at edges, cropped incorrectly, important elements cut off, framing too tight, framing too loose",
+      "chinese": "边缘切掉，错误裁剪，重要元素被切，构图太紧，构图太松"
+    },
+    {
+      "name": "透视扭曲",
+      "english": "distorted perspective, warped image, barrel distortion, pincushion effect, fish-eye distortion, bent lines",
+      "chinese": "扭曲透视，变形图像，桶形畸变，枕形效应，鱼眼畸变，弯曲线条"
+    }
+  ],
+  "AI生成特有问题": [
+    {
+      "name": "AI伪影严重",
+      "english": "obvious AI generation, artificial look, synthetic appearance, computer generated artifacts, uncanny valley, AI hallucinations",
+      "chinese": "明显 AI 生成，人工外观，合成外观，电脑生成伪影，恐怖谷，AI 幻觉"
+    },
+    {
+      "name": "文字乱码",
+      "english": "gibberish text, unreadable writing, fake letters, nonsense characters, AI text failure, wrong text",
+      "chinese": "乱码文字，不可读书写，假字母，无意义字符，AI 文字失败，错误文字"
+    },
+    {
+      "name": "逻辑错误",
+      "english": "impossible physics, floating objects, wrong gravity, impossible geometry, logical inconsistencies, surreal errors",
+      "chinese": "不可能物理，漂浮物体，错误重力，不可能几何，逻辑不一致，超现实错误"
+    },
+    {
+      "name": "风格混乱",
+      "english": "mixed styles, inconsistent aesthetic, clashing art styles, random elements, incoherent design, style confusion",
+      "chinese": "混合风格，不一致美学，冲突艺术风格，随机元素，不连贯设计，风格混乱"
+    },
+    {
+      "name": "过度锐化",
+      "english": "over-sharpened, halos around edges, artificial sharpness, crunchy details, oversharpening artifacts",
+      "chinese": "过度锐化，边缘光晕，人工锐度，粗糙细节，过度锐化伪影"
+    },
+    {
+      "name": "平滑过度",
+      "english": "too smooth, plastic skin, waxy appearance, over-processed, airbrushed look, loss of texture",
+      "chinese": "太平滑，塑料皮肤，蜡质外观，过度处理，磨皮外观，纹理丢失"
+    }
+  ],
+  "通用质量反向扩展": [
+    {
+      "name": "分辨率问题",
+      "english": "low resolution, pixelated, blocky, upscaled artifacts, blurry details, small image enlarged",
+      "chinese": "低分辨率，像素化，块状，放大伪影，模糊细节，小图放大"
+    },
+    {
+      "name": "噪点问题",
+      "english": "excessive noise, grainy, high ISO noise, sensor noise, dirty image, speckled",
+      "chinese": "过度噪点，颗粒感，高 ISO 噪点，传感器噪点，脏图像，斑点"
+    },
+    {
+      "name": "压缩伪影",
+      "english": "compression artifacts, JPEG blocks, banding, posterization, color banding, web-optimized quality",
+      "chinese": "压缩伪影，JPEG 块，条带，色调分离，色彩条带，网页优化质量"
+    },
+    {
+      "name": "曝光问题",
+      "english": "overexposed, underexposed, blown highlights, crushed shadows, poor exposure, wrong exposure",
+      "chinese": "过度曝光，曝光不足，高光溢出，阴影压碎，糟糕曝光，错误曝光"
+    },
+    {
+      "name": "白平衡错误",
+      "english": "wrong white balance, color cast, too warm, too cool, orange tint, blue tint, green tint",
+      "chinese": "错误白平衡，色偏，太暖，太冷，橙色偏，蓝色偏，绿色偏"
+    },
+    {
+      "name": "对焦问题",
+      "english": "out of focus, blurry, soft focus, missed focus, shallow depth of field, focus error",
+      "chinese": "失焦，模糊，柔焦，对焦失误，浅景深，对焦错误"
+    }
+  ]
+}
