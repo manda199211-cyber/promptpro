@@ -40,8 +40,6 @@ npm run codes life 20
 可用类型：
 
 ```text
-week   周付
-month  月付
 year   年付 ¥59
 life   永久 ¥99
 ```

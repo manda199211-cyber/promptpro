@@ -1,16 +1,4 @@
 {
-  "WEEK-10-MP": {
-    "plan": "周付",
-    "price": "¥10 / 周",
-    "days": 7,
-    "disabled": true
-  },
-  "MONTH-199-MP": {
-    "plan": "月付",
-    "price": "¥19.9 / 月",
-    "days": 31,
-    "disabled": true
-  },
   "YEAR-59-MP": {
     "plan": "年付",
     "price": "¥59 / 年",
@@ -68,5 +56,19 @@
     "price": "¥99 一次性",
     "lifetime": true,
     "createdAt": "2026-04-27T14:42:06.448Z"
+  },
+  "YEAR-DF56BA-1D2393": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-28T05:37:49.353Z"
+  },
+  "YEAR-EC9E53-C3F040": {
+    "plan": "年付",
+    "price": "¥59 / 年",
+    "days": 365,
+    "createdAt": "2026-04-28T05:53:53.092Z",
+    "usedAt": "2026-04-28T05:54:01.650Z",
+    "activatedPlan": "年付"
   }
 }

@@ -5,14 +5,12 @@ const path = require('path');
 const [, , planArg, countArg] = process.argv;
 const count = Number(countArg || 1);
 const plans = {
-  week: { label: '周付', prefix: 'WEEK', price: '¥10 / 周', days: 7 },
-  month: { label: '月付', prefix: 'MONTH', price: '¥19.9 / 月', days: 31 },
   year: { label: '年付', prefix: 'YEAR', price: '¥59 / 年', days: 365 },
   life: { label: '永久', prefix: 'LIFE', price: '¥99 一次性', lifetime: true }
 };
 
 if (!plans[planArg] || !Number.isInteger(count) || count < 1 || count > 500) {
-  console.log('用法: node scripts/generate-codes.js <week|month|year|life> <数量>');
+  console.log('用法: node scripts/generate-codes.js <year|life> <数量>');
   console.log('示例: node scripts/generate-codes.js year 20');
   process.exit(1);
 }
