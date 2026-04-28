@@ -1,12 +1,17 @@
-const path = require('path');
-const { ROOT, handleOptions, readJson, sendJson } = require('./_shared');
-
 module.exports = function handler(req, res) {
-  if (handleOptions(req, res)) return;
-  const config = readJson(path.join(ROOT, 'server', 'site-config.json'));
-  sendJson(res, 200, {
-    contactName: config.contactName || 'M-Prompt',
-    wechatId: config.wechatId || '请填写你的微信号',
-    notice: config.notice || '付款后发送截图领取兑换码'
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.status(204).end();
+    return;
+  }
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(200).json({
+    contactName: 'M-Prompt',
+    wechatId: 'Skt1never',
+    notice: '\u4ed8\u6b3e\u540e\u53d1\u9001\u622a\u56fe\u9886\u53d6\u5151\u6362\u7801'
   });
 };
