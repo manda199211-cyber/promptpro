@@ -1,28 +1,26 @@
-const path = require('path');
-const { ROOT, handleOptions, readJson, sendJson, signToken } = require('./_shared');
+const crypto = require('crypto');
+
+const TOKEN_SECRET = process.env.MPROMPT_TOKEN_SECRET || 'change-this-secret-before-production';
 
 module.exports = function handler(req, res) {
-  if (handleOptions(req, res)) return;
+  if (req.method === 'OPTIONS') {
+    setCors(res);
+    res.status(204).end();
+    return;
+  }
   if (req.method !== 'POST') {
-    sendJson(res, 405, { error: '方法不允许' });
+    setCors(res);
+    res.status(405).json({ error: '\u65b9\u6cd5\u4e0d\u5141\u8bb8' });
     return;
   }
 
   const body = typeof req.body === 'string' ? safeJson(req.body) : (req.body || {});
   const code = String(body.code || '').trim().toUpperCase();
-  const codes = readJson(path.join(ROOT, 'server', 'redeem-codes.json'));
-  const pack = codes[code];
+  const pack = getPackFromCode(code);
 
   if (!pack) {
-    sendJson(res, 400, { error: '兑换码无效' });
-    return;
-  }
-  if (pack.disabled) {
-    sendJson(res, 400, { error: '兑换码已停用' });
-    return;
-  }
-  if (pack.usedAt) {
-    sendJson(res, 400, { error: '兑换码已被使用' });
+    setCors(res);
+    res.status(400).json({ error: '\u5151\u6362\u7801\u65e0\u6548' });
     return;
   }
 
@@ -34,14 +32,33 @@ module.exports = function handler(req, res) {
     lifetime: Boolean(pack.lifetime),
     activatedAt: now.toISOString()
   };
+
   if (!pack.lifetime) {
     const expiresAt = new Date(now);
     expiresAt.setDate(expiresAt.getDate() + Number(pack.days || 0));
     membership.expiresAt = expiresAt.toISOString();
   }
 
-  sendJson(res, 200, { membership, token: signToken(membership) });
+  setCors(res);
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(200).json({ membership, token: signToken(membership) });
 };
+
+function getPackFromCode(code) {
+  if (/^YEAR-[A-Z0-9]{6}-[A-Z0-9]{6}$/.test(code)) {
+    return { plan: '\u5e74\u4ed8', price: '\u00a559 / \u5e74', days: 365 };
+  }
+  if (/^LIFE-[A-Z0-9]{6}-[A-Z0-9]{6}$/.test(code)) {
+    return { plan: '\u6c38\u4e45', price: '\u00a599 \u4e00\u6b21\u6027', lifetime: true };
+  }
+  return null;
+}
+
+function signToken(payload) {
+  const body = Buffer.from(JSON.stringify(payload)).toString('base64url');
+  const sig = crypto.createHmac('sha256', TOKEN_SECRET).update(body).digest('base64url');
+  return `${body}.${sig}`;
+}
 
 function safeJson(value) {
   try {
@@ -49,4 +66,10 @@ function safeJson(value) {
   } catch {
     return {};
   }
+}
+
+function setCors(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
 }
